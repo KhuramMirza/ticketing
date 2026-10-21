@@ -9,7 +9,6 @@ export class RequestValidationError extends CustomError {
   }
 
   serializeErrors() {
-    console.log("Request serializeErrors");
     return this.errors
       .filter((error) => error.type === "field")
       .map((error) => ({

@@ -1,11 +1,11 @@
-import express from "express";
 import type { Request, Response } from "express";
-import { body, validationResult } from "express-validator";
+import express from "express";
+import { body } from "express-validator";
 import jwt from "jsonwebtoken";
 
 import { User } from "../models/user.js";
-import { RequestValidationError } from "../errors/request-validation-error.js";
 import { BadRequestError } from "../errors/bad-request-error.js";
+import { validateRequest } from "../middlewares/validate-request.js";
 
 const router = express.Router();
 
@@ -15,12 +15,8 @@ router.post(
     body("email").isEmail().withMessage("Email must be valid"),
     body("password").trim().isLength({ min: 4, max: 20 }).isString(),
   ],
+  validateRequest,
   async (req: Request, res: Response) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      throw new RequestValidationError(errors.array());
-    }
-
     const { email, password } = req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) {

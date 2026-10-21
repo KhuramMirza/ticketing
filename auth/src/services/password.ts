@@ -9,6 +9,6 @@ export class Password {
     storedPassword: string,
     suppliedPassword: string,
   ) {
-    return await bcrypt.compare(storedPassword, suppliedPassword);
+    return await bcrypt.compare(suppliedPassword, storedPassword);
   }
 }
