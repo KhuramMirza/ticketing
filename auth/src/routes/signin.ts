@@ -27,7 +27,6 @@ router.post(
       existingUser.password,
       password,
     );
-    console.log(isMatched);
     if (!isMatched) {
       throw new BadRequestError("Invalid credentials");
     }
