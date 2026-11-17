@@ -46,7 +46,6 @@ yarn-error.log*
 # =========================
 # Skaffold generates a hidden cache folder that should not be tracked
 .skaffold/
-.prettierrc
 
 # tsc output emitted next to source files
 **/src/**/*.js
