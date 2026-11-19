@@ -7,8 +7,7 @@ import { signinRouter } from './routes/signin.js';
 import { signoutRouter } from './routes/signout.js';
 import { currentUserRouter } from './routes/currentUser.js';
 
-import { errorHandler } from './middlewares/error-handler.js';
-import { NotFoundError } from './errors/not-found-error.js';
+import { errorHandler, NotFoundError } from '@mk-ticketing-ms/common';
 
 const app = express();
 
